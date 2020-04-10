@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Levels/Level5.gd" type="Script" id=1]
+[ext_resource path="res://Blocks/Floor.tres" type="TileSet" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blocks/PropelLeft.tscn" type="PackedScene" id=4]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Back.tscn" type="PackedScene" id=6]
+
+[node name="Level5" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 458791, 0, 0, 458792, 0, 0, 458793, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 0, 0, 524327, 0, 0, 524328, 0, 0, 524329, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0, 589839, 0, 0, 589840, 0, 0, 589841, 0, 0, 589842, 0, 0, 589843, 0, 0, 589844, 0, 0, 917530, 1, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2120, 390 )
+
+[node name="PropelLeft" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1696, 875.433 )
+
+[node name="NextLevel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 550, 430 )
+
+[node name="Node" parent="." instance=ExtResource( 6 )]
+[connection signal="body_entered" from="NextLevel" to="." method="_on_NextLevel_body_entered"]
+[connection signal="reset" from="Node" to="." method="_on_Node_reset"]

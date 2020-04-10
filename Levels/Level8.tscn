@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Levels/Level8.gd" type="Script" id=1]
+[ext_resource path="res://Blocks/Floor.tres" type="TileSet" id=2]
+[ext_resource path="res://Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Blocks/Kill.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Blocks/Propel.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Blocks/Boost.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NextLevel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Back.tscn" type="PackedScene" id=8]
+
+[node name="Level8" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+format = 1
+tile_data = PoolIntArray( 65560, 0, 0, 65561, 0, 0, 65562, 0, 0, 65563, 0, 0, 65564, 0, 0, 65565, 0, 0, 65566, 0, 0, 65567, 0, 0, 65568, 0, 0, 65569, 0, 0, 65570, 0, 0, 131096, 0, 0, 131097, 0, 0, 131098, 0, 0, 131099, 0, 0, 131100, 0, 0, 131101, 0, 0, 131102, 0, 0, 131103, 0, 0, 131104, 0, 0, 131105, 0, 0, 131106, 0, 0, 196632, 0, 0, 262168, 0, 0, 327704, 0, 0, 393240, 0, 0, 458776, 0, 0, 524312, 0, 0, 589843, 0, 0, 589848, 0, 0, 655361, 0, 0, 655362, 0, 0, 655363, 0, 0, 655364, 0, 0, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655379, 0, 0, 720915, 0, 0, 786451, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 1, 0, 851985, 0, 0, 851986, 1, 0, 851987, 0, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 154.324, 559.643 )
+
+[node name="Kill" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1111.97, 403.751 )
+
+[node name="Kill2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1311.86, 608.084 )
+
+[node name="Kill3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1375.86, 608.084 )
+
+[node name="Kill4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1439.86, 608.084 )
+
+[node name="Kill5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1503.86, 608.084 )
+
+[node name="Propel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1055.41, 822.814 )
+
+[node name="Propel2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1183.41, 822.814 )
+
+[node name="Boost" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1184.5, 222.524 )
+
+[node name="NextLevel" parent="." instance=ExtResource( 7 )]
+position = Vector2( 2128.93, -39.8344 )
+
+[node name="Node" parent="." instance=ExtResource( 8 )]
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
+[connection signal="body_entered" from="NextLevel" to="." method="_on_NextLevel_body_entered"]
+[connection signal="reset" from="Node" to="." method="_on_Node_reset"]
